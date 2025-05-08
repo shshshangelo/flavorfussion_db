@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    RewriteEngine On
+    RewriteBase /group3/uploaded_img/
+
+    Options -Indexes
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^uploaded_img$ index.php?url=uploaded_img [QSA,L]
+</IfModule>
