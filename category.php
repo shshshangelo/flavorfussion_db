@@ -2,11 +2,7 @@
 include 'components/connect.php';
 session_start();
 
-if (isset($_SESSION['user_id'])) {
-   $user_id = $_SESSION['user_id'];
-} else {
-   $user_id = '';
-}
+$user_id = $_SESSION['user_id'] ?? '';
 
 include 'components/add_cart.php';
 ?>
@@ -18,6 +14,7 @@ include 'components/add_cart.php';
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Category</title>
+   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
    <!-- Bootstrap & Dependencies -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
@@ -29,7 +26,7 @@ include 'components/add_cart.php';
 
    <!-- Font Awesome -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-   
+
    <!-- Custom CSS -->
    <link rel="stylesheet" href="css/style.css">
 
@@ -137,6 +134,24 @@ if (isset($message1)) {
 <div class="loader">
    <img src="images/loader.gif" alt="">
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+   document.querySelectorAll('.products .box').forEach(box => {
+      const qtyInput = box.querySelector('.qty');
+      const priceVal = parseFloat(box.querySelector('input[name="price"]').value);
+      const priceEl  = box.querySelector('.price');
+
+      function updatePrice() {
+         const quantity = parseInt(qtyInput.value) || 1;
+         const total = priceVal * quantity;
+         priceEl.innerHTML = '<span>₱</span>' + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      qtyInput.addEventListener('input', updatePrice);
+   });
+});
+</script>
 
 <script src="js/script.js"></script>
 </body>

@@ -126,6 +126,23 @@ include 'components/add_cart.php';
    });
 
    document.addEventListener('DOMContentLoaded', function () {
+
+      // 🟡 Dynamic price update on quantity change
+      document.querySelectorAll('.products .box').forEach(box => {
+         const qtyInput = box.querySelector('.qty');
+         const priceVal = parseFloat(box.querySelector('input[name="price"]').value);
+         const priceEl  = box.querySelector('.price');
+
+         function updatePrice() {
+            const quantity = parseInt(qtyInput.value) || 1;
+            const total = priceVal * quantity;
+            priceEl.innerHTML = '<span>₱</span>' + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+         }
+
+         qtyInput.addEventListener('input', updatePrice);
+      });
+
+      // 🛒 Require login to add to cart
       document.querySelectorAll('.fa-shopping-cart').forEach(button => {
          button.addEventListener('click', event => {
             if ('<?= $user_id ?>' === '') {
@@ -142,6 +159,7 @@ include 'components/add_cart.php';
             }
          });
       });
+
    });
 </script>
 
