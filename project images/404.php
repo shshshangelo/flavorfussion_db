@@ -47,7 +47,7 @@
     <div class="container">
         <h1>404 Not Found</h1>
         <p>Sorry, the page you are looking for might be in another page.</p>
-        <p><a href="/group3/home.php">Return to Home</a></p>
+        <p><a href="https://flavorfussion-eats.shop/">Return to Home</a></p>
     </div>
 </body>
 </html>
