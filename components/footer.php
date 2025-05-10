@@ -6,7 +6,7 @@
          <img src="images/email-icon.png" alt="">
          <h3>Email Address</h3>
             <p style="color: black;">Having a problem? Email us.</p>
-         <a href="mailto:group3@gmail.com">flavorfussioneats@gmail.com</a>
+         <a href="mailto:group3@gmail.com">support@flavorfussion-eats.shop</a>
       </div>
 
       <div class="box">
